@@ -17,7 +17,8 @@
   <textarea id="output" readonly></textarea>
 
   <script>
-    const fixedMessage = `銀翼万歳`;
+    const fixedMessage = `こんにちは、私は銀翼騎士団の管理人の銀さんです。(^▽^)/私は挨拶に来ました、出来れば私のオープンチャットに参加して下さい🥺オープンチャット「銀翼騎士団」
+https://line.me/ti/g2/v1rSskqpur3DsEOqT0rnb4iz0pge2Ptztg-chA?utm_source=invitation&utm_medium=link_copy&utm_campaign=default`;
 
     function generateUUID() {
       return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -44,9 +45,7 @@
       const textarea = document.getElementById("output");
       textarea.select();
       document.execCommand("copy");
-      alert("コピーしました！");
     }
-    setInterval(autoGenerateAndCopy, 1000); 
   </script>
 </body>
 </html>
