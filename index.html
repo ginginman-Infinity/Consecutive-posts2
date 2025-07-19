@@ -17,35 +17,40 @@
   <textarea id="output" readonly></textarea>
 
   <script>
-    const fixedMessage = `こんにちは、私は銀翼騎士団の管理人の銀さんです。(^▽^)/私は挨拶に来ました、出来れば私のオープンチャットに参加して下さい🥺オープンチャット「銀翼騎士団」
+  const fixedMessage = `こんにちは、私は銀翼騎士団の管理人の銀さんです。(^▽^)/私は挨拶に来ました、出来れば私のオープンチャットに参加して下さい🥺オープンチャット「銀翼騎士団」
 https://line.me/ti/g2/v1rSskqpur3DsEOqT0rnb4iz0pge2Ptztg-chA?utm_source=invitation&utm_medium=link_copy&utm_campaign=default`;
 
-    function generateUUID() {
-      return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-        const r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-        return v.toString(16);
-      });
-    }
+  function generateUUID() {
+    // 通常UUIDの生成
+    const base = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      const r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
 
-    function generateText() {
-      const uuid = generateUUID();
-      const message = `${fixedMessage}\n${uuid}\n`;
-      document.getElementById("output").value = message;
-    }
+    // 追加で5桁のランダムな数字を付ける
+    const extra = Math.floor(Math.random() * 90000 + 10000); // 10000〜99999の5桁
+    return `${base}-${extra}`;
+  }
 
-    function generateMultipleTexts() {
-      let output = '';
-      for (let i = 0; i < 10; i++) {
-        output += `${fixedMessage}\n${generateUUID()}\n\n`;
-      }
-      document.getElementById("output").value = output;
-    }
+  function generateText() {
+    const uuid = generateUUID();
+    const message = `${fixedMessage}\n${uuid}\n`;
+    document.getElementById("output").value = message;
+  }
 
-    function copyText() {
-      const textarea = document.getElementById("output");
-      textarea.select();
-      document.execCommand("copy");
+  function generateMultipleTexts() {
+    let output = '';
+    for (let i = 0; i < 10; i++) {
+      output += `${fixedMessage}\n${generateUUID()}\n\n`;
     }
-  </script>
+    document.getElementById("output").value = output;
+  }
+
+  function copyText() {
+    const textarea = document.getElementById("output");
+    textarea.select();
+    document.execCommand("copy");
+  }
+</script>
 </body>
 </html>
